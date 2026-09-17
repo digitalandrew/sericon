@@ -55,6 +55,8 @@ The session handoff, historical requirements and detailed local hardware notes r
 
 ## Publish the beta documentation
 
-`mkdocs.yml` sets the intended canonical URL to `https://sericon.xyz/`. Deploy only the contents of `.local/docs-site/` to a static host. Domain registration, DNS, hosting and publication are separate from a local build.
+The documentation is hosted on GitHub Pages at [sericon.xyz](https://sericon.xyz/). The [Documentation workflow](https://github.com/digitalandrew/sericon/actions/workflows/docs.yml) builds the site in strict mode and checks links, downloadable assets and screenshot hashes on pull requests and pushes to `main`. Only a successful build from `main` is published. You can also run the workflow manually from the Actions tab.
+
+The deployment uploads only `.local/docs-site/`. GitHub Pages uses a custom Actions workflow, with `sericon.xyz` set as the repository's custom domain. `mkdocs.yml` uses the same canonical URL. DNS is managed in Porkbun, with the apex and `www` pointing to GitHub Pages. The workflow uses GitHub's deployment permissions and needs no Porkbun credentials.
 
 The public source repository is [digitalandrew/sericon](https://github.com/digitalandrew/sericon), licensed under [MIT](../LICENSE). Release binaries have not yet been published. When they are ready, publish artifacts with checksums and add their verified download links to the installation guide and README.
