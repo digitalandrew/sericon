@@ -29,7 +29,15 @@ Sericon runs independently of Athanor (which is coming soon). No AI provider, mo
 
 ## Install and start
 
-Download the [0.1.0 beta](https://github.com/digitalandrew/sericon/releases/tag/v0.1.0) for your Linux host:
+Quick install for Linux, using Bash, Zsh or another POSIX-compatible shell:
+
+```sh
+curl -fsSL https://sericon.xyz/install.sh | sh && export PATH="$HOME/.local/bin:$PATH"
+```
+
+The installer selects the host architecture, verifies the release's pinned SHA-256 and installs to `~/.local/bin`. No sudo is needed. The export makes `sericon` available in the current shell. See [quick install](docs/installation.md#quick-install) for persistent PATH setup and custom locations.
+
+Then run `sericon`. To download and install manually, choose the [0.1.0 beta](https://github.com/digitalandrew/sericon/releases/tag/v0.1.0) for your Linux host:
 
 | Host | Download |
 | --- | --- |

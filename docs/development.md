@@ -83,3 +83,5 @@ The documentation is hosted on GitHub Pages at [sericon.xyz](https://sericon.xyz
 The deployment uploads only `.local/docs-site/`. GitHub Pages uses a custom Actions workflow, with `sericon.xyz` set as the repository's custom domain. `mkdocs.yml` uses the same canonical URL. DNS is managed in Porkbun, with the apex and `www` pointing to GitHub Pages. The workflow uses GitHub's deployment permissions and needs no Porkbun credentials.
 
 The public source repository is [digitalandrew/sericon](https://github.com/digitalandrew/sericon), licensed under [MIT](../LICENSE). Binary downloads and checksum instructions are in [installation](installation.md#download-a-prebuilt-release).
+
+The build publishes `scripts/install.sh` unchanged at `https://sericon.xyz/install.sh`; the docs checker compares its bytes with the source. For a new release, update the installer's version and three pinned archive checksums after verifying the published assets. Run `python3 tests/installer.py` to check installation, architecture selection and failure handling with temporary prefixes before publishing the script.

@@ -31,6 +31,14 @@ Sericon runs independently of Athanor (which is coming soon). No AI provider, mo
 
 ## Choose a guide
 
+Quick install for Linux in Bash or Zsh:
+
+```sh
+curl -fsSL https://sericon.xyz/install.sh | sh && export PATH="$HOME/.local/bin:$PATH"
+```
+
+Then run `sericon`. [Installation](installation.md#quick-install) explains architecture selection, checksum verification and PATH setup.
+
 | Task | Guide |
 | --- | --- |
 | Install and connect to an adapter | [Installation](installation.md), [get started](getting-started.md) |

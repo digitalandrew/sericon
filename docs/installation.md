@@ -4,6 +4,36 @@ The beta targets Linux. Host builds cover x86-64, ARM64 and ARMv6 hard-float, in
 
 The source is available at [digitalandrew/sericon](https://github.com/digitalandrew/sericon) under the MIT license.
 
+## Quick install
+
+For Bash, Zsh or another POSIX-compatible shell on Linux:
+
+```sh
+curl -fsSL https://sericon.xyz/install.sh | sh && export PATH="$HOME/.local/bin:$PATH"
+```
+
+Then run `sericon`. The [installer script](../scripts/install.sh) selects x86-64, ARM64 or ARMv6 hard-float, downloads the 0.1.0 beta, checks its pinned SHA-256 and verifies that the executable runs before installing it. It needs `curl`, `tar`, `sha256sum` and standard Linux shell utilities. No sudo is needed.
+
+The executable goes in `~/.local/bin`. The complete release archive, including examples and license notices, is kept in `~/.local/share/sericon`. Re-running the command updates the executable without interrupting an existing broker; [start a new session](#update-an-existing-installation) to use the new version.
+
+The export updates PATH in your **current shell**. Many distributions already add `~/.local/bin` for future logins. If yours does not, add this line to `~/.bashrc` for Bash or `~/.zshrc` for Zsh:
+
+```sh
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+The installer leaves shell startup files unchanged. In Fish, run `curl -fsSL https://sericon.xyz/install.sh | sh`, then `fish_add_path "$HOME/.local/bin"`.
+
+To inspect the script first or choose a different prefix:
+
+```sh
+curl -fsSLo install.sh https://sericon.xyz/install.sh
+sh install.sh --help
+sh install.sh --prefix /your/chosen/prefix
+```
+
+A custom prefix receives `bin/sericon` and `share/sericon/`; add its `bin` directory to PATH. See [serial-device access](#serial-device-access) if the terminal cannot open your adapter.
+
 ## Download a prebuilt release
 
 The [0.1.0 beta release](https://github.com/digitalandrew/sericon/releases/tag/v0.1.0) includes these static Linux executables. Each embeds all four optional DUT helpers: x86_64, mipsel, aarch64 and arm. No Rust toolchain, Python runtime or shared-library installation is needed to run them.

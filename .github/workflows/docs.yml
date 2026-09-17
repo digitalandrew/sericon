@@ -33,6 +33,8 @@ jobs:
         run: mkdocs build --strict
       - name: Check links, assets and screenshot hashes
         run: python scripts/check-docs.py
+      - name: Check Linux installer
+        run: python tests/installer.py
       - name: Upload website
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4

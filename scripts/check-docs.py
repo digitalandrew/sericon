@@ -80,6 +80,7 @@ def main():
     for private in ('session-handoff', 'requirements', 'hardware-validation', 'hooks.py'):
         assert not (SITE / private).exists(), ('maintainer document was published', private)
     for source, destination in (
+        ('scripts/install.sh', 'install.sh'),
         ('LICENSE', 'assets/licenses/SERICON-LICENSE'),
         ('examples/config.toml', 'assets/examples/config.toml'),
         ('formulas/examples/tplink-uboot-interrupt.rhai', 'assets/examples/tplink-uboot-interrupt.rhai'),

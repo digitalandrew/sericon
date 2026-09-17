@@ -5,6 +5,7 @@ from mkdocs.structure.files import File
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = {
+    "../scripts/install.sh": "install.sh",
     "../LICENSE": "assets/licenses/SERICON-LICENSE",
     "../examples/config.toml": "assets/examples/config.toml",
     "../formulas/examples/tplink-uboot-interrupt.rhai": "assets/examples/tplink-uboot-interrupt.rhai",
