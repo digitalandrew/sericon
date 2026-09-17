@@ -1,0 +1,7 @@
+{# Keep the repository link local to the page; no live GitHub statistics request. #}
+<a class="md-source" href="{{ config.repo_url }}" title="Source code on GitHub">
+  <span class="md-source__icon md-icon">
+    {% include ".icons/" ~ config.theme.icon.repo ~ ".svg" %}
+  </span>
+  <span class="md-source__repository">{{ config.repo_name }}</span>
+</a>

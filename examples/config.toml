@@ -1,0 +1,34 @@
+# Optional ~/.config/sericon/config.toml. All settings have built-in defaults.
+[adapters]
+prefer = ["cp210x", "tigard", "ftdi", "ch34x", "pl2303", "cdc-acm"]
+# serial_number = "0001"
+
+[serial]
+# port = "/dev/serial/by-id/usb-example"
+baud = "auto" # Or an integer such as 115200
+baud_rates = [115200, 57600, 38400, 19200, 9600, 230400, 460800, 921600]
+sample_ms = 700
+min_bytes = 32
+data_bits = 8
+parity = "none" # none, odd, even
+stop_bits = 1
+flow_control = "none" # none, hardware, software
+dtr = false
+rts = false
+
+[logging]
+enabled = true
+directory = "." # Relative to the session's launch directory
+
+[terminal]
+scrollback_lines = 10000 # Rendered rows per attached terminal; 0..100000
+mouse = true # Wheel scrolling; false keeps the terminal's mouse handling
+
+# Optional custom formula, resolved relative to this config file:
+# [[formulas]]
+# name = "boot-errors"
+# description = "Group numeric errors from retained traffic"
+# script = "formulas/boot-errors.rhai"
+# interactive = false # Set true for formulas that send UART commands
+# Or replace script with inline source, for example:
+# source = 'scan_regex("ERROR ([0-9]+)", "boot-error", 1);'

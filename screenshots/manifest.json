@@ -1,0 +1,50 @@
+{
+  "download-location.png": {
+    "original": "Screenshot 2026-09-17 at 10.48.04 AM.png",
+    "sha256": "84bfa8b294c1d0de4f7dee7ddcf0fc5d078a4d5a424e260c5dcd9947789f769b"
+  },
+  "download-verified.png": {
+    "original": "Screenshot 2026-09-17 at 10.48.20 AM.png",
+    "sha256": "25db28efed797b1e50144188b2c649cd8c9868403a8c71d86e8bf4464c471c6f"
+  },
+  "endpoint-results.png": {
+    "original": "Screenshot 2026-09-17 at 10.44.43 AM.png",
+    "sha256": "ddea369f2ba853f91c8c520c24f6c7d626406fadc53454c173b072e84c546107"
+  },
+  "file-tree.png": {
+    "original": "Screenshot 2026-09-17 at 10.47.50 AM.png",
+    "sha256": "a7e51d1a68a8cd9cd05ec84091a5e1a2b63c2480ca3449d61f3ffc223257add7"
+  },
+  "files-menu.png": {
+    "original": "Screenshot 2026-09-17 at 10.18.14 AM.png",
+    "sha256": "9788e6717afa81392dc91fd1255bb9e645f289ecd3f06a62984b3d6ded7031b2"
+  },
+  "formulas.png": {
+    "original": "Screenshot 2026-09-17 at 10.14.57 AM.png",
+    "sha256": "f6f3590077dee90a863361d96d927cd1cf8352b9e11658247247e6f47a261949"
+  },
+  "helper-architectures.png": {
+    "original": "Screenshot 2026-09-17 at 10.19.02 AM.png",
+    "sha256": "cd12ad953aa03eb1b736db414c202cc6dfaa94a7ea7772505ccb60d797ddd4f6"
+  },
+  "helper-location.png": {
+    "original": "Screenshot 2026-09-17 at 10.19.17 AM.png",
+    "sha256": "32b2ef8b15de362ac2a36eefa477017cc4335204886464c54e81b0ba684d16d3"
+  },
+  "helper-review.png": {
+    "original": "Screenshot 2026-09-17 at 10.19.33 AM.png",
+    "sha256": "4be24c910c71e2c42f1d565aa695e646939ec13dbb9f41010013f1f8f845f32a"
+  },
+  "helper-setup.png": {
+    "original": "Screenshot 2026-09-17 at 10.18.47 AM.png",
+    "sha256": "ed23d8026df0df2af1f737e05721102d4d9d7eb1e1b4678ff435a2871f4c11bc"
+  },
+  "main-menu.png": {
+    "original": "Screenshot 2026-09-17 at 10.11.58 AM.png",
+    "sha256": "e9bc51bdc8e2bc727df1e74f05414558c4b0cc5059cdf88b061dc27f6c7359bb"
+  },
+  "search-results.png": {
+    "original": "Screenshot 2026-09-17 at 10.14.26 AM.png",
+    "sha256": "d199c38094096903c974745d008a8a29594dfacf1db74428e99e738fbb278f11"
+  }
+}

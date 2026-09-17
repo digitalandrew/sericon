@@ -1,0 +1,32 @@
+[package]
+name = "sericon"
+version = "0.1.0"
+edition = "2024"
+description = "A shared serial terminal with automatic discovery, capture, and local MCP access"
+license = "MIT"
+repository = "https://github.com/digitalandrew/sericon"
+homepage = "https://sericon.xyz/"
+
+[dependencies]
+anyhow = "1"
+base64 = "0.22"
+chrono = { version = "0.4", default-features = false, features = ["clock", "serde"] }
+clap = { version = "4", features = ["derive"] }
+libc = "0.2"
+regex = "1"
+rhai = { version = "1.26.1", default-features = false, features = ["serde", "std", "sync", "no_module"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serialport = { version = "4.8", default-features = false }
+sha2 = "0.11.0"
+signal-hook = "0.3"
+tempfile = "3"
+toml = "0.8"
+unicode-width = "0.2"
+url = "2.5.8"
+uuid = { version = "1", features = ["v4"] }
+vt100 = { version = "0.16.2", path = "vendor/vt100" }
+
+[profile.release]
+lto = "thin"
+strip = true

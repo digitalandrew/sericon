@@ -1,0 +1,27 @@
+:root, [data-md-color-scheme="default"] {
+  --md-text-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --md-code-font: ui-monospace, "Cascadia Code", "Source Code Pro", monospace;
+  --md-primary-fg-color: #222522;
+  --md-primary-bg-color: #f4f0e7;
+  --md-accent-fg-color: #835316;
+  --md-default-bg-color: #f8f5ee;
+  --md-default-fg-color: #282c29;
+  --md-default-fg-color--light: #5b625a;
+  --md-typeset-a-color: #79500e;
+  --md-code-bg-color: #eeebe3;
+}
+.md-header { border-bottom: 2px solid #b79a5d; box-shadow: none; }
+.md-header__topic:first-child { font-weight: 650; letter-spacing: .03em; }
+.md-typeset h1, .md-typeset h2, .md-typeset h3 { color: #282c29; font-weight: 600; }
+.md-typeset h1 { letter-spacing: -.035em; }
+.md-typeset h2 { padding-bottom: .25em; border-bottom: 1px solid #d6cbb2; }
+.md-typeset img { display: block; height: auto; border: 1px solid #777566; border-radius: .25rem; }
+.md-typeset p a, .md-typeset td a { text-decoration: underline; text-underline-offset: .15em; }
+.md-typeset table:not([class]) { background: #fcfaf5; }
+.md-typeset table:not([class]) th { background: #eee7d7; }
+.md-nav__link--active { font-weight: 650; }
+.md-typeset a:focus-visible, .md-nav a:focus-visible { outline: 2px solid #926226; outline-offset: 3px; }
+.md-footer { background: #222522; }
+@media (max-width: 44.99em) {
+  .md-typeset h1 { font-size: 1.8em; }
+}

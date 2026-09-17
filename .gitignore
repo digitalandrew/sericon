@@ -1,0 +1,14 @@
+/target/
+/sericon-*/
+*.log
+__pycache__/
+.local/
+
+# Local maintainer records and original captures; public images live in docs/assets.
+/docs/session-handoff.md
+/docs/requirements.md
+/docs/hardware-validation.md
+/screenshots/*.png
+/downloads/
+.env
+.env.*

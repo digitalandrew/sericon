@@ -1,0 +1,99 @@
+Sericon formula API v1 (Rhai)
+
+Globals: params (typed parameter map), session_id, run_id, history_end.
+history(after): retained RX/TX event page through history_end. Returns events,
+  next_cursor, has_more, history_gap. Each data event includes exact bytes (blob).
+scan("passwords" | "endpoints"): scan normalized retained lines, emit grouped findings.
+
+Embedded Linux (interactive=true; ready Linux shell and empty prompt required):
+linux_probe(): test existing DUT cksum/dd/encoder capabilities; return summary.
+linux_list(absolute_path): emit one result per directory entry and return summary.
+linux_download(absolute_path, filename): verified regular-file download; return
+  saved path, bytes and verification details. Requires explicit output_dir.
+  Helpers claim input and release at a known shell boundary. Reclaim before
+  later custom sends. Cancellation/timeouts mid-command may retain input.
+  These signatures install nothing. Require dd, base64/od/hexdump, and cksum
+  (or sha256sum plus wc); listing also needs printf. Per-chunk noise retries,
+  before/after whole-file checksums.
+  Limit 64 MiB, 512 directory entries; no devices, pseudo-files or symlink files.
+  Failed output stays .partial; SHA-256 identifies the host artifact.
+linux_probe(helper_path), linux_list(path, helper_path),
+linux_download(path, filename, helper_path): use an existing static DUT helper;
+  empty helper_path uses existing shell utilities. Same limits/verification.
+linux_helper_install(arch, directory): explicitly writes a bundled static helper
+  under an existing writable/executable DUT directory. Verifies all bytes before
+  launch; returns helper path, size, SHA-256 and capabilities. No auto-detection
+  of ABI: choose a bundled arch from 'sericon files helpers'. No output_dir needed.
+  Failure retains its private DUT directory; result/progress records identify it.
+  No daemon/startup changes; reboot removes it only on volatile storage.
+  See docs/files.md and docs/helper.md. Built-ins: linux-probe, linux-list,
+  linux-download (optional helper parameter), linux-helper-install (arch, path).
+linux_upload(host_source, dut_path, helper_path, executable): explicitly read
+  one absolute host regular file and upload to a NEW DUT path using a protocol-2
+  helper. Limit 64 MiB; no host source symlinks. A private unnamed host snapshot
+  fixes the transferred bytes before UART writes. executable=false publishes
+  mode 0600; true uses 0700. No execution or replacement. Each chunk has verified
+  readback and the whole file is checked before atomic publication. Failure
+  retains a named DUT .partial file reported in results. Returns destination,
+  byte count, source SHA-256 and verification details. No output_dir required.
+linux_inspect(helper_path): protocol-2 helper required. Emit identity, CPU,
+  memory, uptime, mounts, storage candidates and flash-layout section records;
+  return a small collection summary. No device files are written. Missing or
+  truncated sections are marked. Display previews are capped at 2048 characters;
+  raw proc sections at 8192 bytes. Identity and storage use structured fields.
+linux_collect_overview(helper_path): collect those same sections, requiring
+  output_dir. Save device-overview.json (raw bytes as base64, per-section hashes
+  and timestamps) and manifest.json (artifact hash). Collection is sequential,
+  not an atomic snapshot. Raw section hashes identify bytes, not target identity.
+  Built-ins: linux-upload, linux-inspect, linux-collect-overview. New helper
+  capabilities are probed; old helpers fail before creating upload files.
+scan_regex(pattern, kind, capture_index): scan lines and group the chosen capture.
+matches(pattern, text): array of {start, end, text, groups}; groups[0] is the whole match.
+emit(value): append a JSON-compatible finding/result. print(text) emits a message.
+progress(done, total, message): update run progress without producing UART output.
+
+Interactive formulas automatically claim input before executing. Analysis formulas
+cannot send. All input passes through the session broker; human takeover cancels
+the formula's authority to write, even if the human subsequently releases input.
+claim(): reserve input again after an explicit release; never takes another writer.
+release(): explicitly yield input at a known boundary.
+mark(): set this formula's RX cursor to now and discard its buffered RX. Call BEFORE
+  sending a new command when old prompts should not satisfy the next expect.
+send_line(text): send text plus CR, retaining ownership for the next step.
+send(text) / send_bytes(blob): send exact bytes, no appended CR; maximum 4096 bytes.
+expect(regex, timeout_ms) / expect_text(literal, timeout_ms) /
+  expect_bytes(blob, timeout_ms): consume RX through the first match, including
+  matches split across reads. TX never satisfies expect. Success returns
+  {matched:true, text, bytes, before, match_bytes, groups, cursor}; byte fields are
+  blobs. Timeout returns {matched:false, buffered, cursor} and keeps buffered RX.
+  Regex uses Rust regex syntax on bytes; use (?-u:...) for non-UTF-8 byte matching.
+  Empty matches are errors. No automatic resend occurs after timeout.
+read_bytes(max_bytes, timeout_ms): consume up to 65536 RX bytes; empty on timeout.
+  expect/read share one buffer and cursor, initially positioned at run start.
+sleep_ms(ms): cancellable delay. Waits/delays accept 0..3600000 ms.
+hex_decode(text) / hex_encode(blob), bytes(text), utf8(blob): conversion helpers.
+  Hex input accepts whitespace; utf8 rejects invalid UTF-8. Rhai provides numeric
+  conversion, loops, arrays, maps and string operations.
+
+artifact_open(filename): create a private file beneath the run's explicit output_dir.
+artifact_write(filename, blob_or_text): append a chunk; returns bytes written.
+artifact_close(filename): sync and mark the file complete. Output metadata includes
+  the path, byte count, SHA-256 and completion state. No existing file is overwritten.
+  Successful runs finalize open files; failed/cancelled runs retain partial artifacts.
+
+Runs have a default five-minute deadline, configurable up to 24 hours. Four runs
+may execute concurrently; the latest 16 remain in memory for the session lifetime.
+Limits: 64 KiB source; 50 million Rhai operations; 32 call levels; 1 MiB string/RX
+buffer/scan line; 65536 array/blob items; 1024 map entries; 4096-byte regex patterns;
+2 MiB compiled regex; 5000 results and 2 MiB result JSON (32 KiB per result);
+8 artifacts, 64 GiB each. Large dumps must read/write incrementally.
+Host operations check cancellation/deadlines too. Scripts cannot execute shell
+commands, import modules, or open serial devices. Host file reading is limited
+to the explicit linux_upload source operation; there is no generic file-read API.
+
+Successful complete commands release input. Failure/cancellation after sending,
+or success after unfinished raw input, retains ownership for human recovery.
+Cancellation cannot undo bytes already sent. Use Ctrl-] t to recover retained input.
+No-log sessions keep results in memory only; explicit artifact output is still
+available. Logged sessions archive source, arguments and final results alongside
+the session logs. A session ending stops its runs; live run IDs do not survive it.
