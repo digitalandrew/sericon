@@ -33,7 +33,7 @@ class Links(HTMLParser):
 def parsed(path):
     text = path.read_text()
     if path.suffix == '.md':
-        text = markdown.markdown(text, extensions=['tables', 'fenced_code', 'toc'])
+        text = markdown.markdown(text, extensions=['tables', 'fenced_code', 'toc', 'attr_list'])
     return Links(text)
 
 

@@ -74,6 +74,8 @@ Output is written to `.local/docs-site/`. The build includes the canonical confi
 
 The small `docs-theme/` override renders the GitHub link without fetching repository or release statistics. Fonts, search and images are served with the site.
 
+The Sericon mark is a vessel crossed by a serial pulse, using the Athanor family's 64×64 grid and rounded instrument linework. The [brass and copper mark](assets/sericon.svg), [favicon tile](assets/sericon-favicon.svg) and [single-colour mark](assets/sericon-mono.svg) are SVGs. Keep their vessel, pulse and terminal geometry identical; the favicon uses a heavier stroke for small sizes. Terminal text uses its compact text symbol because ordinary terminals cannot render the SVG mark.
+
 The session handoff, historical requirements and detailed local hardware notes remain local maintainer records, excluded from Git and the site. No serial captures, `.local` files or runtime logs are site inputs.
 
 ## Publish the beta documentation

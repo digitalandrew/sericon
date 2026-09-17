@@ -11,11 +11,14 @@
   --md-code-bg-color: #eeebe3;
 }
 .md-header { border-bottom: 2px solid #b79a5d; box-shadow: none; }
-.md-header__topic:first-child { font-weight: 650; letter-spacing: .03em; }
+.md-header__topic:first-child { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: .075em; }
+.md-header__button.md-logo img, .md-nav__button.md-logo img { width: 1.6rem; height: 1.6rem; }
 .md-typeset h1, .md-typeset h2, .md-typeset h3 { color: #282c29; font-weight: 600; }
 .md-typeset h1 { letter-spacing: -.035em; }
 .md-typeset h2 { padding-bottom: .25em; border-bottom: 1px solid #d6cbb2; }
 .md-typeset img { display: block; height: auto; border: 1px solid #777566; border-radius: .25rem; }
+.md-typeset h1.sericon-title { display: flex; align-items: center; gap: .55em; }
+.md-typeset h1.sericon-title::before { content: ""; flex: 0 0 56px; width: 56px; height: 56px; background: url("sericon-favicon.svg") center / contain no-repeat; }
 .md-typeset p a, .md-typeset td a { text-decoration: underline; text-underline-offset: .15em; }
 .md-typeset table:not([class]) { background: #fcfaf5; }
 .md-typeset table:not([class]) th { background: #eee7d7; }
@@ -24,4 +27,5 @@
 .md-footer { background: #222522; }
 @media (max-width: 44.99em) {
   .md-typeset h1 { font-size: 1.8em; }
+  .md-typeset h1.sericon-title::before { flex-basis: 48px; width: 48px; height: 48px; }
 }

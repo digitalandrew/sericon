@@ -19,7 +19,7 @@ theme:
   custom_dir: docs-theme
   font: false
   logo: assets/sericon.svg
-  favicon: assets/sericon.svg
+  favicon: assets/sericon-favicon.svg
   icon:
     repo: fontawesome/brands/github
   palette:
