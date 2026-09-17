@@ -1,6 +1,8 @@
 # Sericon
 
-Sericon keeps a serial session available to a human terminal, scripts and local AI tools. Start with `sericon`: it selects an adapter, tries 115200 baud first and logs traffic in the launch directory.
+Sericon is a serial terminal for Linux, built to make everyday work with embedded devices easier. Connect with one command, use [arrow-key menus](terminal.md) and [searchable scrollback](search.md), work with an embedded Linux filesystem over serial, and automate repeated tasks with **formulas**.
+
+Start by typing `sericon`; adapter selection, baud detection and logging are built in. [Files](files.md) supports downloads from an embedded Linux shell, with a file tree and uploads available through the optional helper. [Formulas](formulas.md) run inside Sericon, and [AI coding tools](ai-tools.md) can join a session already running in your terminal.
 
 **Version 0.1.0 beta · Linux, including Raspberry Pi**
 

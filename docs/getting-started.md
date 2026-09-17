@@ -1,6 +1,6 @@
 # Get started
 
-Sericon is a Linux serial terminal with automatic adapter selection, passive baud detection and session logging. A human terminal and local AI tools can share the same connection.
+Start a logged serial session with one command, then use the menu to search output, work with embedded Linux files or run a formula. Sericon handles adapter selection and passive baud detection by default; flags are available when the port and rate are already known.
 
 ## Start a session
 

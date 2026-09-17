@@ -1,12 +1,12 @@
 # Sericon
 
-A serial terminal for Linux, built for shared sessions with people and local AI tools.
+Sericon is a serial terminal for Linux, built to make everyday work with embedded devices easier. Connect with one command, use arrow-key menus and searchable scrollback, work with an embedded Linux filesystem over serial, and automate repeated tasks with **formulas**.
 
 ```sh
 sericon
 ```
 
-Sericon selects an attached UART [Universal Asynchronous Receiver/Transmitter] adapter, starts at 115200 baud, and checks incoming text to identify the rate. Received and transmitted bytes are logged in the current directory. A human terminal, scripts and AI coding tools can use the same running session and its retained history.
+With no arguments, Sericon looks for an attached UART [Universal Asynchronous Receiver/Transmitter] adapter, starts at 115200 baud, and checks incoming text to identify the rate. Received and transmitted bytes are logged in the current directory by default.
 
 **0.1.0 beta · Linux, including Raspberry Pi**
 
@@ -14,14 +14,14 @@ Sericon selects an attached UART [Universal Asynchronous Receiver/Transmitter] a
 
 [![Sericon action menu over a live UART session](docs/assets/screenshots/main-menu.png)](docs/assets/screenshots/main-menu.png)
 
-## What it does
+## Why Sericon
 
-- Selects USB adapters by preference, with port, serial-number and baud overrides.
-- Logs both directions and keeps capture running when the terminal detaches.
-- Scrolls within the UART pane and searches retained history with literal text or regex.
-- Runs embedded Rhai scripts, called **formulas**, for history scans and UART interactions.
-- Browses and transfers embedded Linux files over serial, with checksums and retries for console noise.
-- Shares the session through the CLI [Command-Line Interface] and MCP [Model Context Protocol], including formula authoring and execution.
+- Start without looking up a device path or typing a baud rate. Adapter preferences and passive baud detection handle connection setup, with flags available for explicit settings.
+- Find actions in arrow-key menus, scroll through output without a separate copy mode, and jump between search matches in noisy boot logs.
+- Get files off an embedded Linux device through its serial shell. The optional helper adds a file tree, verified uploads and device inspection, all over the same connection.
+- Turn repeated serial work into formulas: scan logs for endpoints or possible passwords, send commands, or wait for a boot prompt. Rhai runs inside Sericon, so formulas need no separate scripting runtime.
+- Keep a record of both sides of the conversation. Logging starts by default and capture continues when the terminal detaches.
+- Let scripts or an AI coding tool join the running session while the human terminal stays attached. The CLI [Command-Line Interface] and MCP [Model Context Protocol] share its history and coordinate input.
 
 Sericon runs independently of Athanor. No AI provider, model key, Python runtime or network connection is required for the terminal. AI access is optional.
 
