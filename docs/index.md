@@ -61,3 +61,9 @@ The optional helper supplies directory browsing, file reads, verified uploads an
 [![Embedded Linux file tree](assets/screenshots/file-tree.png)](assets/screenshots/file-tree.png)
 
 Source build and documentation instructions are in [development](development.md). Sericon uses the [MIT license](../LICENSE); dependency notices are listed under [third-party components](third-party.md).
+
+## Why the name Sericon?
+
+Sericon is short for **serial console**, and it also fits the alchemy theme of Athanor and its tools. In English alchemy, [sericon was a starting material](https://talks.cam.ac.uk/talk/index/26660/), used in preparations for making an elixir.
+
+UART is often where an IoT hacking engagement starts. A serial console can provide boot logs, a shell or access to a bootloader, giving us somewhere to begin investigating the device. That is the connection behind the name: a starting point for the work that follows, with **formulas** to automate repeated tasks along the way.

@@ -117,3 +117,9 @@ For source checks, documentation preview and release preparation, see [developme
 ## License
 
 Sericon is licensed under the [MIT license](LICENSE). See [third-party components](docs/third-party.md) for dependency notices.
+
+## Why the name Sericon?
+
+Sericon is short for **serial console**, and it also fits the alchemy theme of Athanor and its tools. In English alchemy, [sericon was a starting material](https://talks.cam.ac.uk/talk/index/26660/), used in preparations for making an elixir.
+
+UART is often where an IoT hacking engagement starts. A serial console can provide boot logs, a shell or access to a bootloader, giving us somewhere to begin investigating the device. That is the connection behind the name: a starting point for the work that follows, with **formulas** to automate repeated tasks along the way.
