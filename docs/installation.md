@@ -2,7 +2,36 @@
 
 The beta targets Linux. Host builds cover x86-64, ARM64 and ARMv6 hard-float, including compatible Raspberry Pi systems. macOS and Windows are not supported in this release.
 
-The source is available at [digitalandrew/sericon](https://github.com/digitalandrew/sericon) under the MIT license. Public binary download links will be added when release artifacts are published.
+The source is available at [digitalandrew/sericon](https://github.com/digitalandrew/sericon) under the MIT license.
+
+## Download a prebuilt release
+
+The [0.1.0 beta release](https://github.com/digitalandrew/sericon/releases/tag/v0.1.0) includes these static Linux executables. Each embeds all four optional DUT helpers: x86_64, mipsel, aarch64 and arm. No Rust toolchain, Python runtime or shared-library installation is needed to run them.
+
+Choose the architecture of the **host running Sericon**. Run `uname -m` on that host if unsure:
+
+| Host / `uname -m` | Archive |
+| --- | --- |
+| Intel / AMD 64-bit, `x86_64` | [sericon-0.1.0-linux-x86_64.tar.gz](https://github.com/digitalandrew/sericon/releases/download/v0.1.0/sericon-0.1.0-linux-x86_64.tar.gz) |
+| ARM64, `aarch64`, including 64-bit Raspberry Pi OS | [sericon-0.1.0-linux-aarch64.tar.gz](https://github.com/digitalandrew/sericon/releases/download/v0.1.0/sericon-0.1.0-linux-aarch64.tar.gz) |
+| ARMv6 or later with hard-float support, `armv6l` / `armv7l`, including 32-bit Raspberry Pi OS | [sericon-0.1.0-linux-armv6hf.tar.gz](https://github.com/digitalandrew/sericon/releases/download/v0.1.0/sericon-0.1.0-linux-armv6hf.tar.gz) |
+
+Select according to the operating system's architecture, even if the CPU supports a newer one. ARM host builds have CPU-emulation coverage; [physical Raspberry Pi validation remains pending](beta.md#validation).
+
+Download the archive and [SHA256SUMS](https://github.com/digitalandrew/sericon/releases/download/v0.1.0/SHA256SUMS) into the same directory. This example installs the x86-64 build; replace the archive and extracted directory names for ARM:
+
+```sh
+curl -fLO https://github.com/digitalandrew/sericon/releases/download/v0.1.0/sericon-0.1.0-linux-x86_64.tar.gz
+curl -fLO https://github.com/digitalandrew/sericon/releases/download/v0.1.0/SHA256SUMS
+sha256sum --check --ignore-missing SHA256SUMS
+tar -xzf sericon-0.1.0-linux-x86_64.tar.gz
+install -Dm755 sericon-0.1.0-linux-x86_64/sericon "$HOME/.local/bin/sericon"
+"$HOME/.local/bin/sericon" --version
+```
+
+Continue with extraction only when the checksum reports `OK`. Put `~/.local/bin` on `PATH`, arrange [serial-device access](#serial-device-access), then run `sericon`.
+
+Each archive also includes example configuration and a formula, license notices, dependency source archives where required, and `BUILD-INFO.json` with the source commit and binary/helper hashes. Keep these notices and sources with redistributed copies.
 
 ## Build the terminal
 

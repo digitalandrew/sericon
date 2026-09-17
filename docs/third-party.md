@@ -6,6 +6,8 @@ The optional static DUT helpers include musl libc 1.2.5. The [musl copyright not
 
 The terminal uses a vendored vt100 parser. Its [MIT license](../vendor/vt100/LICENSE) is retained in the source tree. Rust dependencies and exact versions are recorded in `Cargo.toml` and `Cargo.lock`; their individual licenses remain applicable.
 
+Prebuilt release archives include `THIRD-PARTY-NOTICES.txt`, per-dependency license files, Rust runtime notices and a dependency inventory. They also include the unchanged source archives for the MPL-licensed `serialport` and `smartstring` crates under `sources/`, with their original license terms. `BUILD-INFO.json` identifies the Sericon source commit and embedded payload hashes.
+
 Print the embedded helper notices with:
 
 ```sh

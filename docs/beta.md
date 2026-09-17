@@ -6,7 +6,7 @@ This documentation covers the Sericon 0.1.0 beta. The beta includes Linux serial
 
 | Component | Included targets |
 | --- | --- |
-| Sericon host | Linux x86-64, static ARM64, static ARMv6 hard-float |
+| Sericon host | Static Linux x86-64, ARM64 and ARMv6 hard-float |
 | Optional DUT helper | x86_64, mipsel, aarch64, arm (ARMv6KZ hard-float/VFPv2) |
 | Other host operating systems | Not included |
 
@@ -31,6 +31,7 @@ As of September 17 2026:
 | Coverage | Verified |
 | --- | --- |
 | Native software fixtures | 36 Rust tests and 73 isolated PTY [pseudoterminal] integration tests; formatting, Clippy and locked builds |
+| Published host packages | Static musl executables for all three targets, with all four helper payloads; versions, embedded hashes, archive checksums and dependency notices checked |
 | Physical CP2102 / ESP32 | Adapter discovery, 115200 baud recognition, shared session I/O and retained logging on a Hatch Rest |
 | Physical Tigard / TP-Link MT7628 | Adapter selection, fixed 115200 operation, target-specific U-Boot interruption, and protocol-1 helper installation with verified binary downloads |
 | C helper CPU tests | x86-64 natively; MIPS24Kc, ARM Cortex-A53 and ARM1176 under QEMU. Reads, listings, inspection, verified uploads, corruption/collision handling and unsafe-path rejection |

@@ -29,17 +29,22 @@ Sericon runs independently of Athanor (which is coming soon). No AI provider, mo
 
 ## Install and start
 
-Clone the source and build with the Rust toolchain pinned in `rust-toolchain.toml`:
+Download the [0.1.0 beta](https://github.com/digitalandrew/sericon/releases/tag/v0.1.0) for your Linux host:
+
+| Host | Download |
+| --- | --- |
+| Intel / AMD 64-bit | [x86-64](https://github.com/digitalandrew/sericon/releases/download/v0.1.0/sericon-0.1.0-linux-x86_64.tar.gz) |
+| ARM64 / 64-bit Raspberry Pi OS | [ARM64](https://github.com/digitalandrew/sericon/releases/download/v0.1.0/sericon-0.1.0-linux-aarch64.tar.gz) |
+| ARMv6+ hard-float / 32-bit Raspberry Pi OS, including original Pi and Zero | [ARMv6 hard-float](https://github.com/digitalandrew/sericon/releases/download/v0.1.0/sericon-0.1.0-linux-armv6hf.tar.gz) |
+
+All three are static executables with all four optional DUT helpers embedded. See [installation](docs/installation.md#download-a-prebuilt-release) for checksum verification and architecture selection. After extracting the archive, run these commands from its directory:
 
 ```sh
-git clone https://github.com/digitalandrew/sericon.git
-cd sericon
-cargo build --release --locked
-install -Dm755 target/release/sericon "$HOME/.local/bin/sericon"
+install -Dm755 sericon "$HOME/.local/bin/sericon"
 sericon
 ```
 
-Put `~/.local/bin` on `PATH` and give the current user access to the serial device. This builds the terminal; [installation](docs/installation.md) also covers Raspberry Pi builds and bundling the optional DUT helpers.
+Put `~/.local/bin` on `PATH` and give the current user access to the serial device. [Building from source](docs/installation.md#build-the-terminal) is also supported.
 
 Common overrides:
 

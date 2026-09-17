@@ -28,6 +28,29 @@ python3 tests/arm_smoke.py
 
 The helper and ARM host tests require QEMU user emulators. Record physical tests separately from CPU emulation. Current coverage is in [beta validation](beta.md#validation).
 
+## Prepare release binaries
+
+Use an x86-64 Linux build host with Python 3.12, rustup, `readelf`, the [helper cross-compilers](helper.md#building) and QEMU user emulators on `PATH`. `scripts/build-release.sh` builds all four DUT helpers, then static x86-64, ARM64 and ARMv6 hard-float host executables using the pinned Rust toolchain and its bundled linker.
+
+```sh
+sh scripts/build-release.sh
+python3 tests/helper.py
+SERICON_TEST_BINARY=target/x86_64-unknown-linux-musl/release/sericon python3 tests/integration.py
+python3 tests/arm_smoke.py
+```
+
+Run the Rust checks above as well. Commit the release source, then package from the clean checkout:
+
+```sh
+python3 scripts/package-release.py
+cd target/releases/v0.1.0
+sha256sum --check SHA256SUMS
+```
+
+The packager checks static linking, executable versions and embedded helper hashes, including ARM startup under QEMU. It creates three archives with installation instructions, examples, license notices, MPL dependency sources and build provenance, plus `SHA256SUMS`. Output defaults to `target/releases/vVERSION`; it must be a new directory. Use `--output PATH` for a separate validation run.
+
+Tag the validated source commit and upload these files to a GitHub release. Use a prerelease for beta builds. Verify downloaded asset hashes before publishing download links. Keep private logs and toolchains outside release packages.
+
 ## Preview the documentation
 
 The website uses MkDocs with Material. These Python packages are documentation build dependencies; they do not become Sericon runtime dependencies.
@@ -59,4 +82,4 @@ The documentation is hosted on GitHub Pages at [sericon.xyz](https://sericon.xyz
 
 The deployment uploads only `.local/docs-site/`. GitHub Pages uses a custom Actions workflow, with `sericon.xyz` set as the repository's custom domain. `mkdocs.yml` uses the same canonical URL. DNS is managed in Porkbun, with the apex and `www` pointing to GitHub Pages. The workflow uses GitHub's deployment permissions and needs no Porkbun credentials.
 
-The public source repository is [digitalandrew/sericon](https://github.com/digitalandrew/sericon), licensed under [MIT](../LICENSE). Release binaries have not yet been published. When they are ready, publish artifacts with checksums and add their verified download links to the installation guide and README.
+The public source repository is [digitalandrew/sericon](https://github.com/digitalandrew/sericon), licensed under [MIT](../LICENSE). Binary downloads and checksum instructions are in [installation](installation.md#download-a-prebuilt-release).
