@@ -10,7 +10,7 @@ With no arguments, Sericon looks for an attached UART adapter, starts at 115200 
 
 **0.1.0 beta · Linux, including Raspberry Pi**
 
-[Get started](docs/getting-started.md) · [Install](docs/installation.md) · [Documentation](docs/index.md) · [Beta scope](docs/beta.md) · [MIT license](LICENSE)
+[Get started](docs/getting-started.md) · [Install](docs/installation.md) · [Documentation](https://sericon.xyz/) · [Beta scope](docs/beta.md) · [MIT license](LICENSE)
 
 [![Sericon action menu over a live UART session](docs/assets/screenshots/main-menu.png)](docs/assets/screenshots/main-menu.png)
 
@@ -93,7 +93,7 @@ Start `sericon` in a terminal, then ask the client to list Sericon sessions and 
 
 ## Documentation and beta feedback
 
-Start with the [documentation index](docs/index.md). The planned documentation domain is **sericon.xyz**; the guides are available in this checkout now.
+Read the documentation at [sericon.xyz](https://sericon.xyz/). The same guides are available in this checkout through the [documentation index](docs/index.md).
 
 Report problems in [GitHub Issues](https://github.com/digitalandrew/sericon/issues). The beta targets Linux. Baud detection is a text heuristic; file transfers require a ready Linux shell; automatic reconnect is not included. [Beta scope and validation](docs/beta.md) distinguishes software fixtures, CPU emulation and physical hardware coverage, and lists the details to include in an issue report.
 
